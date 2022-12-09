@@ -1,9 +1,9 @@
 #include "King.h"
 #include "Board.h"
 
-King::King(const std::string& colorP) {
-	color = colorP;
-}
+using namespace Chess::Pieces;
+
+King::King(const std::string& colorP) :Piece(colorP) {}
 
 void King::printPiece() const{
 	HANDLE  hConsole;
@@ -19,7 +19,7 @@ void King::printPiece() const{
 		std::cout << " k ";*/
 }
 
-std::list<std::pair<int, int>> King::legalMoves(const Board& board, const std::pair<int, int>& startSquare) const {
+std::list<std::pair<int, int>> King::legalMoves(const Chess::Board& board, const std::pair<int, int>& startSquare) const {
 	std::list<std::pair<int, int>> legalMoves;
 	std::list<std::pair<int, int>> pseudoLegalMoves;
 	for (int column = startSquare.second - 1; column < startSquare.second + 2; ++column) {
@@ -52,7 +52,7 @@ std::list<std::pair<int, int>> King::legalMoves(const Board& board, const std::p
 	return pseudoLegalMoves;
 }
 
-bool King::isMoveLegal(const Board& board, const Move& move) const {
+bool King::isMoveLegal(const Chess::Board& board, const Chess::Move& move) const {
 	std::list<std::pair<int, int>> legalMovesList = legalMoves(board, move.getStartSquare());
 	if (std::find(legalMovesList.begin(), legalMovesList.end(), move.getEndSquare()) == legalMovesList.end())
 		return false;

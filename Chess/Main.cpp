@@ -2,7 +2,7 @@
 
 int main()
 {
-	Game gameObj;
+	Chess::Game gameObj;
 	gameObj.playGame();
 }
 

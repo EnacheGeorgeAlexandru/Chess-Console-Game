@@ -1,5 +1,7 @@
 #include "Move.h"
 
+using namespace Chess;
+
 Move::Move(const int& startSquareLine, const int& startSquareColumn, const int& endSquareLine, const int& endSquareColumn) {
 	startSquare.first = startSquareLine;
 	startSquare.second = startSquareColumn;

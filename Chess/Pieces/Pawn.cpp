@@ -1,9 +1,9 @@
 #include "Pawn.h"
 #include "Board.h"
 
-Pawn::Pawn(const std::string& colorP) {
-	color = colorP;
-}
+using namespace Chess::Pieces;
+
+Pawn::Pawn(const std::string& colorP) : Piece(colorP) {}
 
 void Pawn::printPiece() const{
 	HANDLE  hConsole;
