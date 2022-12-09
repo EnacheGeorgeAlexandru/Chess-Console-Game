@@ -1,5 +1,8 @@
 #include "Board.h"
 
+using namespace Chess;
+using namespace Chess::Pieces;
+
 Board::Board() {
 	board.resize(8, std::vector<Tile*>(8));
 	/*for (auto& i : board)
@@ -133,7 +136,7 @@ bool Board::isCheckOnSquare(const std::pair<int, int>& square, const std::string
 bool Board::isKingInCheck(const std::string& color) const{
 	if (color == "white")
 		return isCheckOnSquare(whiteKingPosition, color);
-	if (color == "black")
+	else if (color == "black")
 		return isCheckOnSquare(blackKingPosition, color);
 }
 

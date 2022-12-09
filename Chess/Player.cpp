@@ -1,5 +1,7 @@
 #include "Player.h"
 
+using namespace Chess;
+
 void Player::setColor(const std::string&colorP) {
 	color = colorP;
 }
@@ -30,20 +32,3 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::getCurrentMove() con
 Move Player::getCurrentMoveObj() const {
 	return *currentMovePtr;
 }
-
-//void Player::setAllLegalSquares(const Board& board) {
-//	allLegalSquares.clear();
-//	for (const auto& line : board.getBoard())
-//		for (const auto& tile : line)										////////
-//			if (tile->getPieceOnTile() != nullptr && tile->getPieceOnTile()->getColor() != color)					//legal squares of opposite side
-//				for (const auto& legalSquare : tile->getPieceOnTile()->legalMoves(board, tile->getPosition()))
-//					allLegalSquares.push_back(legalSquare);
-//}
-
-//std::vector<std::pair<int, int>> Player::getAllLegalSquares() const {
-//	/*for (auto i : allLegalSquares)
-//		std::cout << i.first<<" "<<i.second << " \\";
-//	std::cout << std::endl;*/
-//	return allLegalSquares;
-//
-//}

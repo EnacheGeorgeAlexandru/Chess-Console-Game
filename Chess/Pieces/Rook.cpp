@@ -1,9 +1,9 @@
 #include "Rook.h"
 #include "Board.h"
 
-Rook::Rook(const std::string& colorP) {
-	color = colorP;
-}
+using namespace Chess::Pieces;
+
+Rook::Rook(const std::string& colorP) : Piece(colorP) {}
 
 void Rook::printPiece() const{
 	HANDLE  hConsole;
@@ -23,7 +23,7 @@ void Rook::rookLogic(const Board& board, const std::pair<int, int>& startSquare,
 
 }
 
-std::list<std::pair<int, int>> Rook::legalMoves(const Board& board, const std::pair<int, int>& startSquare) const {
+std::list<std::pair<int, int>> Rook::legalMoves(const Chess::Board& board, const std::pair<int, int>& startSquare) const {
 	std::list<std::pair<int, int>> legalMoves;
 	int line, column = startSquare.second;
 	for (line = startSquare.first + 1; line < 8; ++line)
@@ -62,7 +62,7 @@ std::list<std::pair<int, int>> Rook::legalMoves(const Board& board, const std::p
 	return legalMoves;
 }
 
-bool Rook::isMoveLegal( const Board& board, const Move& move) const {
+bool Rook::isMoveLegal( const Chess::Board& board, const Chess::Move& move) const {
 	std::list<std::pair<int, int>> legalMovesList = legalMoves(board, move.getStartSquare());
 	if (std::find(legalMovesList.begin(), legalMovesList.end(), move.getEndSquare()) == legalMovesList.end())
 		return false;

@@ -1,9 +1,9 @@
 #include "Queen.h"
 #include "Board.h"
 
-Queen::Queen(const std::string& colorP) {
-	color = colorP;
-}
+using namespace Chess::Pieces;
+
+Queen::Queen(const std::string& colorP) : Piece(colorP) {}
 
 void Queen::printPiece() const{
 	HANDLE  hConsole;
@@ -19,7 +19,7 @@ void Queen::printPiece() const{
 		std::cout << " q ";*/
 }
 
-std::list<std::pair<int, int>> Queen::legalMoves(const Board& board, const std::pair<int, int>& startSquare) const {
+std::list<std::pair<int, int>> Queen::legalMoves(const Chess::Board& board, const std::pair<int, int>& startSquare) const {
 	std::list<std::pair<int, int>> legalMoves;
 	Rook rook(color);
 	Bishop bishop(color);
@@ -30,7 +30,7 @@ std::list<std::pair<int, int>> Queen::legalMoves(const Board& board, const std::
 	return legalMoves;
 }
 
-bool Queen::isMoveLegal(const Board& board, const Move& move) const {
+bool Queen::isMoveLegal(const Chess::Board& board, const Chess::Move& move) const {
 	std::list<std::pair<int, int>> legalMovesList = legalMoves(board, move.getStartSquare());
 	if (std::find(legalMovesList.begin(), legalMovesList.end(), move.getEndSquare()) == legalMovesList.end())
 		return false;

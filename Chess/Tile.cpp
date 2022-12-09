@@ -1,14 +1,16 @@
 #include "Tile.h"
 
-Tile::Tile(Piece* PieceOnTileP) {
+using namespace Chess;
+
+Tile::Tile(Pieces::Piece* PieceOnTileP) {
 	PieceOnTile = PieceOnTileP;
 }
 
-void Tile::setPieceOnTile(Piece* PieceOnTileP){
+void Tile::setPieceOnTile(Pieces::Piece* PieceOnTileP){
 	PieceOnTile = PieceOnTileP;
 }
 
-Piece* Tile::getPieceOnTile() const{
+Pieces::Piece* Tile::getPieceOnTile() const{
 	return PieceOnTile;
 }
 

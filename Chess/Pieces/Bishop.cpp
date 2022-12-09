@@ -1,9 +1,9 @@
 #include "Bishop.h"
 #include "Board.h"
 
-Bishop::Bishop(const std::string& colorP) {
-	color = colorP;
-}
+using namespace Chess::Pieces;
+
+Bishop::Bishop(const std::string& colorP) : Piece(colorP) {}
 
 void Bishop::printPiece() const{
 	HANDLE  hConsole;

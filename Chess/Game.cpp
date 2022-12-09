@@ -1,5 +1,7 @@
 #include "Game.h"
 
+using namespace Chess;
+
 void Game::nextMove(Player& player) {
 	std::cout << player.getColor() << " to move:\n";
 	player.inputMove();
