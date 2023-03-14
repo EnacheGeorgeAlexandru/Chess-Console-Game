@@ -11,7 +11,7 @@ namespace Chess {
 	class Tile
 	{
 		Pieces::Piece* PieceOnTile;
-		std::pair<int, int> position;
+		std::pair<int8_t, int8_t> position;
 	public:
 		explicit Tile(Pieces::Piece* PieceOnTileP = nullptr);
 		void setPieceOnTile(Pieces::Piece* PieceOnTileP);
@@ -19,5 +19,8 @@ namespace Chess {
 		bool isTileEmpty() const;
 		std::pair<int, int> getPosition()const;
 		void setPosition(const std::pair<int, int>&);
+		~Tile() {
+			delete PieceOnTile;
+		}
 	};
 }

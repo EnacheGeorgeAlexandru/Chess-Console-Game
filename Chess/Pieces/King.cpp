@@ -1,22 +1,18 @@
-#include "King.h"
+﻿#include "King.h"
 #include "Board.h"
 
 using namespace Chess::Pieces;
 
-King::King(const std::string& colorP) :Piece(colorP) {}
+King::King(PieceColor colorP) :Piece(colorP) {}
 
 void King::printPiece() const{
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (color == "white")
+	if (color == PieceColor::eWhite)
 		SetConsoleTextAttribute(hConsole, 159);
-	if (color == "black")
+	if (color == PieceColor::eBlack)
 		SetConsoleTextAttribute(hConsole, 80);
 	std::cout << " K ";
-	/*if (color == "white")
-		std::cout << " K ";
-	if (color == "black")
-		std::cout << " k ";*/
 }
 
 std::list<std::pair<int, int>> King::legalMoves(const Chess::Board& board, const std::pair<int, int>& startSquare) const {
@@ -45,10 +41,6 @@ std::list<std::pair<int, int>> King::legalMoves(const Chess::Board& board, const
 					pseudoLegalMoves.push_back(std::make_pair(startSquare.first + 1, column));
 		}
 	}
-	/*for (const auto& square : pseudoLegalMoves) {
-		if (!board.isCheckOnSquare(square, color))
-			legalMoves.push_back(square);
-	}*/
 	return pseudoLegalMoves;
 }
 

@@ -3,7 +3,10 @@
 using namespace Chess;
 
 void Game::nextMove(Player& player) {
-	std::cout << player.getColor() << " to move:\n";
+	if (player.getColor() == PieceColor::eBlack)
+		std::cout << "black to move:\n";
+	else if (player.getColor() == PieceColor::eWhite)
+		std::cout << "white to move:\n";
 	player.inputMove();
 	while (!board.takeNextMove(player)) {
 		std::cout << "\nNot Legal. Try Again:\n";
@@ -22,8 +25,8 @@ bool Game::gameEnded() {
 
 void Game::playGame() {
 	board.printBoard();
-	player1.setColor("white");
-	player2.setColor("black");
+	player1.setColor(PieceColor::eWhite);
+	player2.setColor(PieceColor::eBlack);
 	while (true) {
 		moveCount++;
 		std::cout << "Move " << moveCount << ":\n";

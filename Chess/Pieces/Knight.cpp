@@ -3,20 +3,16 @@
 
 using namespace Chess::Pieces;
 
-Knight::Knight(const std::string& colorP) : Piece(colorP) {}
+Knight::Knight(PieceColor colorP) : Piece(colorP) {}
 
 void Knight::printPiece() const{
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (color == "white")
+	if (color == PieceColor::eWhite)
 		SetConsoleTextAttribute(hConsole, 159);
-	if (color == "black")
+	if (color == PieceColor::eBlack)
 		SetConsoleTextAttribute(hConsole, 80);
 	std::cout << " N ";
-	/*if (color == "white")
-		std::cout << " N ";
-	if (color == "black")
-		std::cout << " n ";*/
 }
 
 std::list<std::pair<int, int>> Knight::legalMoves(const Chess::Board& board, const std::pair<int, int>& startSquare) const {

@@ -15,8 +15,6 @@ namespace Chess {
 		std::vector<Move*> blackLegalMoves;
 	public:
 		Board();
-		//void setInitialBoardState();
-		//bool makeMove(const Move&, const std::string&, const std::vector <std::pair<int, int>>&);
 		Tile* getTileFromCoordinates(const std::pair<int, int>&) const;
 		Pieces::Piece* getPieceFromCoordinates(const std::pair<int, int>&) const;
 		std::vector<std::vector<Tile*>> getBoard() const;
@@ -24,15 +22,24 @@ namespace Chess {
 		void printEmpty(const int&) const;
 		void printBoard() const;
 		bool validCoordinates(const int&, const int&) const;
-		bool isCheckOnSquare(const std::pair<int, int>&, const std::string&) const;
-		bool isKingInCheck(const std::string&) const;
-		void updateKingPosition(const Move&, const std::string&);
+		bool isCheckOnSquare(const std::pair<int, int>&, PieceColor color) const;
+		bool isKingInCheck(PieceColor color) const;
+		void updateKingPosition(const Move&, PieceColor color);
 		void takeMoveBack(const Move&, Pieces::Piece*);
 		bool isCheckmate();
 		bool takeNextMove(const Player&);
-		bool makeMoveIfLegal(const Move&, const std::string&);
+		bool makeMoveIfLegal(const Move&, PieceColor);
 		void setWhiteLegalMoves();
 		void setBlackLegalMoves();
+		~Board() {
+			for (auto& move : whiteLegalMoves)
+				delete move;
+			for (auto& move : blackLegalMoves)
+				delete move;
+			for (auto& line : board)
+				for (auto& tile : line)
+					delete tile;
+		}
 	};
 }
 

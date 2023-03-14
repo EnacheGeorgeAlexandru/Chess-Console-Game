@@ -3,20 +3,16 @@
 
 using namespace Chess::Pieces;
 
-Rook::Rook(const std::string& colorP) : Piece(colorP) {}
+Rook::Rook(PieceColor colorP) : Piece(colorP) {}
 
 void Rook::printPiece() const{
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (color == "white")
+	if (color == PieceColor::eWhite)
 		SetConsoleTextAttribute(hConsole, 159);
-	if (color == "black")
+	if (color == PieceColor::eBlack)
 		SetConsoleTextAttribute(hConsole, 80);
 	std::cout << " R ";
-	/*if (color == "white")
-		std::cout << " R ";
-	if (color == "black")
-		std::cout << " r ";*/
 }
 
 void Rook::rookLogic(const Board& board, const std::pair<int, int>& startSquare, const int& line, const int& column) {

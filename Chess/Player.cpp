@@ -2,11 +2,11 @@
 
 using namespace Chess;
 
-void Player::setColor(const std::string&colorP) {
+void Player::setColor(PieceColor colorP) {
 	color = colorP;
 }
 
-std::string Player::getColor() const{
+PieceColor Player::getColor() const{
 	return color;
 }
 
@@ -29,6 +29,6 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::getCurrentMove() con
 	return currentMove;
 }
 
-Move Player::getCurrentMoveObj() const {
-	return *currentMovePtr;
+Move* Player::getCurrentMoveObj() const {
+	return currentMovePtr;
 }

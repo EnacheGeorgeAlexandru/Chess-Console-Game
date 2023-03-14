@@ -1,11 +1,11 @@
 #include "Piece.h"
 
+using namespace Chess;
 using namespace Chess::Pieces;
 
-Piece::Piece(const std::string& color) : color{color} {
-}
+Piece::Piece(PieceColor color) : color{color}{}
 
-std::string Piece::getColor() const {
+PieceColor Piece::getColor() const {
 	return color;
 }
 	

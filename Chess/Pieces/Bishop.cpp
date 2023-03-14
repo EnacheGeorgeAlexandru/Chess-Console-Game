@@ -3,20 +3,16 @@
 
 using namespace Chess::Pieces;
 
-Bishop::Bishop(const std::string& colorP) : Piece(colorP) {}
+Bishop::Bishop(PieceColor colorP) : Piece(colorP) {}
 
 void Bishop::printPiece() const{
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (color == "white")
+	if (color == PieceColor::eWhite)
 		SetConsoleTextAttribute(hConsole, 159);
-	if (color == "black")
+	if (color == PieceColor::eBlack)
 		SetConsoleTextAttribute(hConsole, 80);
 	std::cout << " B ";
-	/*if (color == "white")
-		std::cout << " B ";
-	if (color == "black")
-		std::cout << " b ";*/
 }
 
 std::list<std::pair<int, int>> Bishop::legalMoves(const Board& board, const std::pair<int, int>& startSquare) const {
