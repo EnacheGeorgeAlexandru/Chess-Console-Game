@@ -206,7 +206,6 @@ bool Board::takeNextMove(const Player& player) {
 	}
 	setWhiteLegalMoves();
 	setBlackLegalMoves();
-	delete move;
 	return madeMove;
 }
 
@@ -249,4 +248,14 @@ void Board::setBlackLegalMoves() {
 					Move* move = new Move(tile->getPosition(), legalSquare);
 					blackLegalMoves.push_back(move);
 				}
+}
+
+Board::~Board() {
+	for (auto& move : whiteLegalMoves)
+		delete move;
+	for (auto& move : blackLegalMoves)
+		delete move;
+	for (auto& line : board)
+		for (auto& tile : line)
+			delete tile;
 }

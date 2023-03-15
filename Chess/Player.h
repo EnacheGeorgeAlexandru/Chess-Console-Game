@@ -7,18 +7,15 @@ namespace Chess {
 	{
 		std::string name;
 		PieceColor color;
-		std::pair<std::pair<int, int>, std::pair<int, int>> currentMove;
 		Move* currentMovePtr;
 	public:
+		explicit Player(PieceColor color);
 		void setColor(PieceColor color);
 	    PieceColor getColor() const;
 		void convertNotationsToCoordinates(const std::string&, const std::string&);
 		void inputMove();
-		std::pair<std::pair<int, int>, std::pair<int, int>> getCurrentMove() const;
 		Move* getCurrentMoveObj() const;
-		~Player() {
-			delete currentMovePtr;
-		}
+		~Player();
 	};
 }
 

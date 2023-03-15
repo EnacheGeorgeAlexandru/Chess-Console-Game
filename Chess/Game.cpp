@@ -2,21 +2,28 @@
 
 using namespace Chess;
 
+Game::Game() {
+	board = new Board();
+	player1 = new Player(PieceColor::eWhite);
+	player2 = new Player(PieceColor::eBlack);
+	moveCount = 0;
+}
+
 void Game::nextMove(Player& player) {
 	if (player.getColor() == PieceColor::eBlack)
 		std::cout << "black to move:\n";
 	else if (player.getColor() == PieceColor::eWhite)
 		std::cout << "white to move:\n";
 	player.inputMove();
-	while (!board.takeNextMove(player)) {
+	while (!board->takeNextMove(player)) {
 		std::cout << "\nNot Legal. Try Again:\n";
 		player.inputMove();
 	}
-	board.printBoard();
+	board->printBoard();
 }
 
 bool Game::gameEnded() {
-	if (board.isCheckmate()) {
+	if (board->isCheckmate()) {
 		std::cout << "\n\nCHECKMATE\n\n";
 		return true;
 	}
@@ -24,18 +31,22 @@ bool Game::gameEnded() {
 }
 
 void Game::playGame() {
-	board.printBoard();
-	player1.setColor(PieceColor::eWhite);
-	player2.setColor(PieceColor::eBlack);
+	board->printBoard();
 	while (true) {
 		moveCount++;
 		std::cout << "Move " << moveCount << ":\n";
-		nextMove(player1);
+		nextMove(*player1);
 		if (gameEnded())
 			break;
-		nextMove(player2);
+		nextMove(*player2);
 		if (gameEnded())
 			break;
 		std::cout << "\n";
 	}
+}
+
+Game::~Game() {
+	delete board;
+	delete player1;
+	delete player2;
 }

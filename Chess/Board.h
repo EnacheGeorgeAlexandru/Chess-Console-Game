@@ -31,15 +31,7 @@ namespace Chess {
 		bool makeMoveIfLegal(const Move&, PieceColor);
 		void setWhiteLegalMoves();
 		void setBlackLegalMoves();
-		~Board() {
-			for (auto& move : whiteLegalMoves)
-				delete move;
-			for (auto& move : blackLegalMoves)
-				delete move;
-			for (auto& line : board)
-				for (auto& tile : line)
-					delete tile;
-		}
+		~Board();
 	};
 }
 

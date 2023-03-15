@@ -5,12 +5,15 @@
 namespace Chess {
 	class Game
 	{
-		Board board;
-		Player player1, player2;
-		int moveCount = 0;
+		Board* board;
+		Player* player1;
+		Player* player2;
+		int moveCount;
 	public:
+		explicit Game();
 		void nextMove(Player&);
 		bool gameEnded();
 		void playGame();
+		~Game();
 	};
 }
