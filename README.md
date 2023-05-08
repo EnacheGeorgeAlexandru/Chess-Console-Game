@@ -1,5 +1,7 @@
 # Chess Console Game
 This is a console-based two-player Chess game implemented in C++.
+## Update:
+This repository is no longer being updated. Visit https://github.com/EnacheGeorgeAlexandru/Chess for the latest version with a GUI.
 ## Usage
 When the game starts, the board will be displayed, and the first player (playing as white) will be prompted to enter a move. 
 Players take turns moving, with the board being displayed after each move, until one of them checkmates the other and the game ends.
